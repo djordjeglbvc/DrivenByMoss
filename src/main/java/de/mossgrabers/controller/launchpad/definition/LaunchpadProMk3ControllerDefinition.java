@@ -47,6 +47,7 @@ public class LaunchpadProMk3ControllerDefinition extends AbstractLaunchpadDefini
 
         this.buttonSetup.setButton (LaunchpadButton.CLICK, 3, true);
         this.buttonSetup.setButton (LaunchpadButton.UNDO, 1, true);
+        this.buttonSetup.setButton (LaunchpadButton.SELECT, 30);
         this.buttonSetup.setButton (LaunchpadButton.DELETE, 60);
         this.buttonSetup.setButton (LaunchpadButton.QUANTIZE, 40);
         this.buttonSetup.setButton (LaunchpadButton.DUPLICATE, 50);

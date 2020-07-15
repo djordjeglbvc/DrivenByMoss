@@ -24,6 +24,8 @@ public enum LaunchpadButton
     QUANTIZE,
     /** The Duplicate button. */
     DUPLICATE,
+    /** The Fixed Length button. */
+    SELECT,
     /** The Play button. */
     PLAY,
     /** The Record button. */

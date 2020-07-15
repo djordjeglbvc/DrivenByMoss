@@ -6,6 +6,7 @@ package de.mossgrabers.controller.launchpad;
 
 import de.mossgrabers.controller.launchpad.command.trigger.ClickCommand;
 import de.mossgrabers.controller.launchpad.command.trigger.DeleteCommand;
+import de.mossgrabers.controller.launchpad.command.trigger.SelectCommand;
 import de.mossgrabers.controller.launchpad.command.trigger.LaunchpadCursorCommand;
 import de.mossgrabers.controller.launchpad.command.trigger.LaunchpadDuplicateCommand;
 import de.mossgrabers.controller.launchpad.command.trigger.LaunchpadToggleShiftViewCommand;
@@ -309,6 +310,7 @@ public class LaunchpadControllerSetup extends AbstractControllerSetup<LaunchpadC
 
         this.addButton (ButtonID.DELETE, "Delete", new DeleteCommand (this.model, surface), buttonSetup.get (LaunchpadButton.DELETE).getControl (), () -> this.getDeleteStateColor (surface));
         this.addButton (ButtonID.QUANTIZE, "Quantize", new QuantizeCommand<> (this.model, surface), buttonSetup.get (LaunchpadButton.QUANTIZE).getControl (), () -> getStateColor (surface, ButtonID.QUANTIZE));
+        this.addButton (ButtonID.SELECT, "Select", new SelectCommand (this.model, surface), buttonSetup.get (LaunchpadButton.SELECT).getControl (), () -> this.getSelectStateColor (surface));
         this.addButton (ButtonID.DUPLICATE, "Duplicate", new LaunchpadDuplicateCommand (this.model, surface), buttonSetup.get (LaunchpadButton.DUPLICATE).getControl (), () -> getDuplicateStateColor (surface));
         this.addButton (ButtonID.PLAY, "Play", new PlayAndNewCommand (this.model, surface), buttonSetup.get (LaunchpadButton.PLAY).getControl (), () -> this.getPlayStateColor (surface));
         this.addButton (ButtonID.RECORD, "Record", new RecordCommand<> (this.model, surface), buttonSetup.get (LaunchpadButton.RECORD).getControl (), () -> {
@@ -398,6 +400,11 @@ public class LaunchpadControllerSetup extends AbstractControllerSetup<LaunchpadC
         if (surface.isShiftPressed ())
             return this.model.getTransport ().isLoop () ? LaunchpadColorManager.LAUNCHPAD_COLOR_BLUE_HI : LaunchpadColorManager.LAUNCHPAD_COLOR_BLUE_LO;
         return surface.isPressed (ButtonID.DELETE) ? LaunchpadColorManager.LAUNCHPAD_COLOR_MAGENTA_HI : LaunchpadColorManager.LAUNCHPAD_COLOR_MAGENTA_LO;
+    }
+
+    private int getSelectStateColor (final LaunchpadControlSurface surface)
+    {
+        return surface.isPressed (ButtonID.SELECT) ? LaunchpadColorManager.LAUNCHPAD_COLOR_PINK_HI : LaunchpadColorManager.LAUNCHPAD_COLOR_PINK_LO;
     }
 
 
